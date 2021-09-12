@@ -12,7 +12,8 @@ public class Main {
 
         Converter converter = new Converter(78.5,88.7,0.75);
         DinnerAdvisor dinnerAdvisor = new DinnerAdvisor();
-        ExpensesManager expensesManager = new ExpensesManager(); // Здесь создайте объект класса ExpensesManager
+        ExpensesManager expensesManager = new ExpensesManager();
+        Contribution contribution = new Contribution();
 
         while (true) {
             printMenu();
@@ -35,6 +36,14 @@ public class Main {
                 expensesManager.printAllExpenses();
             } else if (command == 5) {
                 System.out.println("Самая большая сумма расходов на этой неделе составила " + expensesManager.findMaxExpense() + " руб.");
+            } else if (command == 6) {
+                System.out.println("Какую сумму Вы хотите заложить?");
+                double amount = scanner.nextDouble();
+                System.out.println("На какой срок (в днях)?");
+                int period = scanner.nextInt();
+                System.out.println("Под какой процент?");
+                double percent = scanner.nextDouble();
+                System.out.println("Ваша прибыль составит " + contribution.pledge(amount, period, percent));
             } else if (command == 0) {
                 System.out.println("Выход");
                 break;
@@ -51,6 +60,7 @@ public class Main {
         System.out.println("3 - Ввести трату");
         System.out.println("4 - Показать траты за неделю");
         System.out.println("5 - Показать самую большую сумму расходов за неделю");
+        System.out.println("6 - Открыть вклад");
         System.out.println("0 - Выход");
     }
 }
